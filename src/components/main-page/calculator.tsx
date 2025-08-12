@@ -2,13 +2,29 @@
 
 import { useState } from 'react';
 
+import { useGeo } from '@/providers/geo-provider';
 import { Container } from '@/shared/ui/container';
 import { H2 } from '@/shared/ui/h2';
 import { Input } from '@/shared/ui/input';
 
-// const numFormat = (num: number) => {
-// 	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-// };
+const numFormat = (num: number) => {
+	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+};
+
+const convertToLocalCurrency = (
+	value: number,
+	localCurrencySymbol: string,
+	localCurrency: string,
+	currentRate: number,
+	withCurrency = true,
+	useSymbol = true,
+) => {
+	const converted = value * currentRate;
+
+	return `${Math.ceil(converted)}${
+		withCurrency ? ' ' + (useSymbol ? localCurrencySymbol : localCurrency) : ''
+	}`;
+};
 
 const calculateCompoundInterest = (principal: number, days: number, rate: number = 0.05) => {
 	const calculatedValue = principal * Math.pow(1 + rate, days);
@@ -21,6 +37,7 @@ const calculateCompoundInterest = (principal: number, days: number, rate: number
 export const Calculator = () => {
 	const [amount, setAmount] = useState(250);
 	const [rangeValue, setRangeValue] = useState(50);
+	const { data } = useGeo();
 
 	const rate = 0.05;
 
@@ -32,13 +49,15 @@ export const Calculator = () => {
 					<div>
 						<div className="relative">
 							<Input
-								className="pr-14 mb-4"
+								className="pr-14 mb-4 font-bold"
 								value={amount}
 								type="number"
 								variant="special"
 								onChange={(e) => setAmount(Number(e.target.value))}
 							/>
-							<span className="text-2xl text-main font-bold absolute right-2 top-1/2 -translate-1/2">$</span>
+							<span className="text-2xl text-main font-bold absolute right-2 top-1/2 -translate-1/2">
+								{data.localCurrencySymbol}
+							</span>
 						</div>
 						<div className="text-base md:text-xl leading-[140%]">Select the period to grow</div>
 						<div className="text-base md:text-xl font-medium leading-[130%]">{rangeValue} days</div>
@@ -57,7 +76,7 @@ export const Calculator = () => {
 					>
 						<div className="text-base md:text-xl leading-[140%]">Your potential future balance</div>
 						<div className="font-special text-[32px] md:text-[46px] leading-none">
-							{calculateCompoundInterest(amount, rangeValue, rate)} $
+							{calculateCompoundInterest(amount, rangeValue, rate)} {data.localCurrencySymbol}
 						</div>
 					</div>
 				</div>

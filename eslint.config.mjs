@@ -31,6 +31,7 @@ const eslintConfig = [
 			'simple-import-sort/exports': 'warn',
 			'import/no-cycle': 'warn',
 			'import/no-duplicates': 'error',
+			'@typescript-eslint/no-explicit-any': 'error',
 		},
 	},
 ];

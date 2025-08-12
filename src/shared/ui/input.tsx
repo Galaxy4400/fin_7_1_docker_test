@@ -6,7 +6,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	variant?: 'default' | 'special';
 }
 
-export const Input = ({ className, type = 'text', variant = 'default' }: InputProps) => {
+export const Input = ({ className, value, onChange, type = 'text', variant = 'default' }: InputProps) => {
 	return (
 		<input
 			className={clsx(
@@ -18,6 +18,8 @@ export const Input = ({ className, type = 'text', variant = 'default' }: InputPr
 				}[variant],
 			)}
 			type={type}
+			value={value}
+			onChange={onChange}
 		/>
 	);
 };

@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 
 import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header/header';
+import { GeoProvider } from '@/providers/geo-provider';
 
 const stSimpleSquare = localFont({
 	src: [
@@ -34,7 +35,9 @@ export default function RootLayout({
 				className={`${robotoSans.className} ${stSimpleSquare.variable} antialiased min-h-screen flex flex-col`}
 			>
 				<Header />
-				<main className="grow">{children}</main>
+				<GeoProvider>
+					<main className="grow">{children}</main>
+				</GeoProvider>
 				<Footer />
 			</body>
 		</html>
