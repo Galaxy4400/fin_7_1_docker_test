@@ -2,65 +2,54 @@
 
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
-import { COUNTRY_CURRENCY, CountryCode, CURRENCY_SYMBOL, CurrencyCode, CurrencySymbol } from './constants';
-
-type GeoDataType = {
-	country: CountryCode;
-	currentRate: number;
-	localCurrency: CurrencyCode;
-	localCurrencySymbol: CurrencySymbol;
-};
-
-type GeoContextType = {
-	data: GeoDataType;
-	loading: boolean;
-};
+import { COUNTRY_CURRENCY, CURRENCY_SYMBOL } from './constants';
+import { CountryCode, GeoContextType, GeoDataType } from './types';
 
 const GeoContext = createContext<GeoContextType | null>(null);
 
 const FROM = 'USD';
+
 const initData: GeoDataType = {
 	country: 'US',
-	currentRate: 0,
+	currentRate: 1,
 	localCurrency: 'USD',
 	localCurrencySymbol: '$',
 };
 
 export const GeoProvider = ({ children }: { children: ReactNode }) => {
 	const [data, setData] = useState<GeoDataType>(initData);
-	const [loading, setLoading] = useState(true);
+
+	const convertToLocalCurrency = (value: number) => {
+		return Math.ceil(value * data.currentRate);
+	};
 
 	useEffect(() => {
-		setLoading(true);
-
 		const getGeoData = async () => {
-			const result: GeoDataType = initData;
-
 			const geoResponse = await fetch('https://ipapi.co/json/');
 			const geoData = (await geoResponse.json()) as { country: CountryCode };
 
-			if (geoData?.country) {
-				result.country = geoData.country;
-			}
-			result.localCurrency = COUNTRY_CURRENCY[result.country] as CurrencyCode;
-			result.localCurrencySymbol = CURRENCY_SYMBOL[result.localCurrency] as CurrencySymbol;
+			if (!geoData?.country) return initData;
+
+			const country = geoData.country;
+			const localCurrency = COUNTRY_CURRENCY[country];
+			const localCurrencySymbol = CURRENCY_SYMBOL[localCurrency];
 
 			const currencyResponse = await fetch(
-				`https://api.frankfurter.app/latest?from=${FROM}&to=${result.localCurrency}`,
+				`https://api.frankfurter.app/latest?from=${FROM}&to=${localCurrency}`,
 			);
 			const currencyData = await currencyResponse.json();
-			const rate = currencyData.rates[result.localCurrency];
 
-			result.currentRate = +rate;
+			if (!currencyData.rates[localCurrency]) return initData;
 
-			setData(result);
+			const currentRate = Number(currencyData.rates[localCurrency]);
+
+			setData((prev) => ({ ...prev, country, currentRate, localCurrency, localCurrencySymbol }));
 		};
 
 		getGeoData();
-		setLoading(false);
 	}, []);
 
-	return <GeoContext.Provider value={{ data, loading }}>{children}</GeoContext.Provider>;
+	return <GeoContext.Provider value={{ data, convertToLocalCurrency }}>{children}</GeoContext.Provider>;
 };
 
 export const useGeo = () => {

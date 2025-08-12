@@ -3,43 +3,25 @@
 import { useState } from 'react';
 
 import { useGeo } from '@/providers/geo-provider';
+import { numFormat } from '@/shared/lib/num-format';
 import { Container } from '@/shared/ui/container';
 import { H2 } from '@/shared/ui/h2';
 import { Input } from '@/shared/ui/input';
 
-const numFormat = (num: number) => {
-	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-};
-
-const convertToLocalCurrency = (
-	value: number,
-	localCurrencySymbol: string,
-	localCurrency: string,
-	currentRate: number,
-	withCurrency = true,
-	useSymbol = true,
-) => {
-	const converted = value * currentRate;
-
-	return `${Math.ceil(converted)}${
-		withCurrency ? ' ' + (useSymbol ? localCurrencySymbol : localCurrency) : ''
-	}`;
-};
-
-const calculateCompoundInterest = (principal: number, days: number, rate: number = 0.05) => {
-	const calculatedValue = principal * Math.pow(1 + rate, days);
-
-	// const format = numFormat(window.workWithCurrency.convertToLocalCurrency(calculatedValue));
-
-	return Math.ceil(calculatedValue);
-};
+const RATE = 0.05;
 
 export const Calculator = () => {
 	const [amount, setAmount] = useState(250);
-	const [rangeValue, setRangeValue] = useState(50);
-	const { data } = useGeo();
+	const [days, setDays] = useState(50);
+	const { data, convertToLocalCurrency } = useGeo();
 
-	const rate = 0.05;
+	const calculateCompoundInterest = () => {
+		const calculatedValue = amount * Math.pow(1 + RATE, days);
+
+		const inLocalCurrency = convertToLocalCurrency(calculatedValue);
+
+		return `${numFormat(inLocalCurrency)} ${data.localCurrencySymbol}`;
+	};
 
 	return (
 		<div className="py-12 md:py-20">
@@ -60,14 +42,14 @@ export const Calculator = () => {
 							</span>
 						</div>
 						<div className="text-base md:text-xl leading-[140%]">Select the period to grow</div>
-						<div className="text-base md:text-xl font-medium leading-[130%]">{rangeValue} days</div>
+						<div className="text-base md:text-xl font-medium leading-[130%]">{days} days</div>
 						<input
 							id="range"
 							type="range"
-							value={rangeValue}
+							value={days}
 							min="1"
 							max="100"
-							onChange={(e) => setRangeValue(Number(e.target.value))}
+							onChange={(e) => setDays(Number(e.target.value))}
 						></input>
 					</div>
 					<div
@@ -76,7 +58,7 @@ export const Calculator = () => {
 					>
 						<div className="text-base md:text-xl leading-[140%]">Your potential future balance</div>
 						<div className="font-special text-[32px] md:text-[46px] leading-none">
-							{calculateCompoundInterest(amount, rangeValue, rate)} {data.localCurrencySymbol}
+							{calculateCompoundInterest()}
 						</div>
 					</div>
 				</div>

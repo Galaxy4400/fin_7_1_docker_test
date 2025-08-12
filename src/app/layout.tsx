@@ -22,6 +22,7 @@ const stSimpleSquare = localFont({
 const robotoSans = Roboto_Slab({
 	variable: '--font-roboto',
 	display: 'swap',
+	preload: false,
 });
 
 export default function RootLayout({

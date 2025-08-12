@@ -85,7 +85,3 @@ export const CURRENCY_SYMBOL = {
 	USD: '$',
 	ZAR: 'R',
 } as const;
-
-export type CountryCode = keyof typeof COUNTRY_CURRENCY;
-export type CurrencyCode = keyof typeof CURRENCY_SYMBOL;
-export type CurrencySymbol = (typeof CURRENCY_SYMBOL)[keyof typeof CURRENCY_SYMBOL];
