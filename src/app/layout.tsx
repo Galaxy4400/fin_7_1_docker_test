@@ -1,12 +1,15 @@
-import './globals.css';
+import '@/shared/globals.css';
 
 import { Roboto_Slab } from 'next/font/google';
 import localFont from 'next/font/local';
 
+import { Footer } from '@/components/footer/footer';
+import { Header } from '@/components/header/header';
+
 const stSimpleSquare = localFont({
 	src: [
 		{
-			path: 'STSimpleSquareRegular.woff2',
+			path: '../shared/STSimpleSquareRegular.woff2',
 			weight: '400',
 			style: 'normal',
 		},
@@ -27,7 +30,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${robotoSans.variable} ${stSimpleSquare.variable} antialiased`}>{children}</body>
+			<body
+				className={`${robotoSans.className} ${stSimpleSquare.variable} antialiased min-h-screen flex flex-col`}
+			>
+				<Header />
+				<main className="grow">{children}</main>
+				<Footer />
+			</body>
 		</html>
 	);
 }
