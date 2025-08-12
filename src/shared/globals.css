@@ -10,6 +10,7 @@
 	--color-second-dark: #bf2183;
 
 	--color-black: #111;
+	--color-gray: #cacaca;
 
 	--color-background: #08111b;
 	--color-background-dark: #02060b;
@@ -35,6 +36,8 @@
 	--color-background: var(--color-background);
 	--color-background-dark: var(--color-background-dark);
 	--color-background-light: var(--color-background-light);
+
+	--color-gray: var(--color-gray);
 
 	--background-image-gradient-main: var(--gradient);
 }

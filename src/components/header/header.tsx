@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { useLockBodyScroll } from '@/shared/lib/use-lock-body-scroll';
 import { Button } from '@/shared/ui/button';
 import { Container } from '@/shared/ui/container';
 
@@ -13,6 +14,7 @@ import { MenuMobile } from './menu-mobile';
 
 export const Header = () => {
 	const [showMenu, setShowMenu] = useState(false);
+	useLockBodyScroll(showMenu);
 
 	return (
 		<>
