@@ -23,9 +23,11 @@ export const Head = () => {
 					<P>
 						Blue Orion automates trading across 65+ cryptocurrencies in 98+ countries. Start with just $250.
 					</P>
-					<Button className="justify-self-start" href="#" variant="gradient">
-						SIGN UP
-					</Button>
+					<div>
+						<Button href="#" variant="gradient" size="md">
+							SIGN UP
+						</Button>
+					</div>
 				</div>
 				<div className="flex justify-center items-center pt-5 md:pt-0">
 					<Image src={mainSrc} alt="main"></Image>
