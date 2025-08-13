@@ -5,7 +5,6 @@ import 'intl-tel-input/styles';
 import { IntlTelInputRef } from 'intl-tel-input/react';
 import dynamic from 'next/dynamic';
 import { useRef } from 'react';
-import { isValid } from 'zod/v3';
 
 const IntlTelInput = dynamic(() => import('intl-tel-input/reactWithUtils'), {
 	ssr: false,
