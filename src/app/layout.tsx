@@ -1,6 +1,5 @@
 import '@/shared/globals.css';
 
-import { Roboto_Slab } from 'next/font/google';
 import localFont from 'next/font/local';
 
 import { Footer } from '@/components/footer/footer';
@@ -10,7 +9,7 @@ import { GeoProvider } from '@/providers/geo-provider';
 const stSimpleSquare = localFont({
 	src: [
 		{
-			path: '../shared/STSimpleSquareRegular.woff2',
+			path: '../shared/fonts/STSimpleSquareRegular.woff2',
 			weight: '400',
 			style: 'normal',
 		},
@@ -19,10 +18,26 @@ const stSimpleSquare = localFont({
 	display: 'swap',
 });
 
-const robotoSans = Roboto_Slab({
+const robotoSlab = localFont({
+	src: [
+		{
+			path: '../shared/fonts/RobotoSlab-Regular.woff2',
+			weight: '400',
+			style: 'normal',
+		},
+		{
+			path: '../shared/fonts/RobotoSlab-Medium.woff2',
+			weight: '500',
+			style: 'normal',
+		},
+		{
+			path: '../shared/fonts/RobotoSlab-SemiBold.woff2',
+			weight: '600',
+			style: 'normal',
+		},
+	],
 	variable: '--font-roboto',
 	display: 'swap',
-	preload: false,
 });
 
 export default function RootLayout({
@@ -33,7 +48,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${robotoSans.className} ${stSimpleSquare.variable} antialiased min-h-screen flex flex-col`}
+				className={`${robotoSlab.className} ${stSimpleSquare.variable} antialiased min-h-screen flex flex-col`}
 			>
 				<Header />
 				<GeoProvider>

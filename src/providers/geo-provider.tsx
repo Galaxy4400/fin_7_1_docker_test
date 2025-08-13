@@ -25,25 +25,29 @@ export const GeoProvider = ({ children }: { children: ReactNode }) => {
 
 	useEffect(() => {
 		const getGeoData = async () => {
-			const geoResponse = await fetch('https://ipapi.co/json/');
-			const geoData = (await geoResponse.json()) as { country: CountryCode };
+			try {
+				const geoResponse = await fetch('https://ipapi.co/json/');
+				const geoData = (await geoResponse.json()) as { country: CountryCode };
 
-			if (!geoData?.country) return initData;
+				if (!geoData?.country) return initData;
 
-			const country = geoData.country;
-			const localCurrency = COUNTRY_CURRENCY[country];
-			const localCurrencySymbol = CURRENCY_SYMBOL[localCurrency];
+				const country = geoData.country;
+				const localCurrency = COUNTRY_CURRENCY[country];
+				const localCurrencySymbol = CURRENCY_SYMBOL[localCurrency];
 
-			const currencyResponse = await fetch(
-				`https://api.frankfurter.app/latest?from=${FROM}&to=${localCurrency}`,
-			);
-			const currencyData = await currencyResponse.json();
+				const currencyResponse = await fetch(
+					`https://api.frankfurter.app/latest?from=${FROM}&to=${localCurrency}`,
+				);
+				const currencyData = await currencyResponse.json();
 
-			if (!currencyData.rates[localCurrency]) return initData;
+				if (!currencyData.rates[localCurrency]) return initData;
 
-			const currentRate = Number(currencyData.rates[localCurrency]);
+				const currentRate = Number(currencyData.rates[localCurrency]);
 
-			setData((prev) => ({ ...prev, country, currentRate, localCurrency, localCurrencySymbol }));
+				setData((prev) => ({ ...prev, country, currentRate, localCurrency, localCurrencySymbol }));
+			} catch (error) {
+				console.log(error);
+			}
 		};
 
 		getGeoData();
