@@ -26,14 +26,17 @@ export const GeoProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		const getGeoData = async () => {
 			try {
-				const geoResponse = await fetch('https://ipapi.co/json/');
-				const geoData = (await geoResponse.json()) as { country: CountryCode };
+				// const geoResponse = await fetch('https://ipapi.co/json/');
+				// const geoData = (await geoResponse.json()) as { country: CountryCode };
+				const geoData = { country: 'US' } as { country: CountryCode };
 
 				if (!geoData?.country) return initData;
 
 				const country = geoData.country;
 				const localCurrency = COUNTRY_CURRENCY[country];
 				const localCurrencySymbol = CURRENCY_SYMBOL[localCurrency];
+
+				if (FROM === localCurrency) return initData;
 
 				const currencyResponse = await fetch(
 					`https://api.frankfurter.app/latest?from=${FROM}&to=${localCurrency}`,
