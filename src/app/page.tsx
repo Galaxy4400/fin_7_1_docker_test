@@ -1,4 +1,5 @@
 import { Calculator } from '@/components/main-page/calculator';
+import { FormBlock1 } from '@/components/main-page/form-block-1';
 import { Head } from '@/components/main-page/head';
 
 export default function HomePage() {
@@ -6,6 +7,7 @@ export default function HomePage() {
 		<>
 			<Head />
 			<Calculator />
+			<FormBlock1 />
 		</>
 	);
 }

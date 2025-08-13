@@ -5,6 +5,7 @@ export const Button = ({
 	children,
 	size = 'default',
 	variant = 'primary',
+	type = 'button',
 	onClick,
 	active,
 	href,
@@ -13,6 +14,7 @@ export const Button = ({
 	children?: React.ReactNode;
 	className?: string;
 	href?: string;
+	type?: 'button' | 'submit';
 	size?: 'default' | 'full' | 'md';
 	variant?: 'primary' | 'gradient' | 'inline';
 	active?: boolean;
@@ -41,7 +43,7 @@ export const Button = ({
 			{children}
 		</Link>
 	) : (
-		<button onClick={onClick} className={buttonClassName} {...props}>
+		<button onClick={onClick} className={buttonClassName} type={type} {...props}>
 			{children}
 		</button>
 	);
