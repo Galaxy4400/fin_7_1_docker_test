@@ -114,7 +114,7 @@ input[type='range']::-moz-range-track {
 }
 
 .iti__tel-input {
-	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight transition-all;
+	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight;
 }
 
 .iti__selected-dial-code {
@@ -126,5 +126,5 @@ input[type='range']::-moz-range-track {
 }
 
 .iti__search-input {
-	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight transition-all;
+	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight;
 }

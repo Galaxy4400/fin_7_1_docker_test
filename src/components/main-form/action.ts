@@ -1,15 +1,13 @@
 'use server';
 
 export type State = {
-	message: string | null;
+	success: boolean;
 };
 
-export const mainAction = async (_: State, formData: FormData) => {
+export const mainAction = async (prevState: State, formData: FormData) => {
 	const rawFormData = Object.fromEntries(formData);
 
-	console.log('rawFormData', rawFormData);
+	console.log(rawFormData);
 
-	await new Promise((resolve) => setTimeout(resolve, 1000));
-
-	return { message: 'Успешно сохранено!' };
+	return { success: true };
 };
