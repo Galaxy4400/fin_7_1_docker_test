@@ -24,7 +24,7 @@ export const Input = ({
 				{
 					default: clsx(
 						'text-black bg-white border border-white',
-						error && 'outline-2 outline-red-500 -outline-offset-3',
+						error && 'outline-2 outline-[#ff0000] -outline-offset-3',
 					),
 					special: 'text-main bg-white border border-main',
 				}[variant],

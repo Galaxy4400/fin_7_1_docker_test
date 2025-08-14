@@ -3,12 +3,12 @@
 import 'intl-tel-input/styles';
 
 import clsx from 'clsx';
-import { IntlTelInputRef } from 'intl-tel-input/react';
 import dynamic from 'next/dynamic';
-import { useActionState, useRef, useState } from 'react';
+import { useActionState, useState } from 'react';
 
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
+import { Loader } from '@/shared/ui/loader';
 
 import { FormState, mainFormAction, MainFormData } from './main-form-action';
 
@@ -25,7 +25,6 @@ const initFormData = {
 };
 
 export const MainForm = () => {
-	const itiRef = useRef<IntlTelInputRef | null>(null);
 	const [phoneIsValid, setPhoneIsValid] = useState(false);
 	const [countryCode, setCountryCode] = useState('');
 
@@ -42,11 +41,11 @@ export const MainForm = () => {
 	const isDirty = Object.entries(formData).some(([key, value]) => formState?.values?.[key] !== value);
 
 	const isFormSubmited = !!formState?.values;
-	const showErrors = (isFormSubmited && !isDirty) || !phoneIsValid;
+	const showErrors = isFormSubmited && !isDirty;
 	const showPhoneError = isFormSubmited && !phoneIsValid;
 
 	return (
-		<form className="grid gap-4" action={formAction}>
+		<form className="relative grid gap-4" action={formAction}>
 			<input type="hidden" name="countryCode" value={countryCode} />
 			<input type="hidden" name="phoneIsValid" value={+phoneIsValid} />
 
@@ -92,17 +91,21 @@ export const MainForm = () => {
 							strictMode: true,
 							separateDialCode: true,
 						}}
-						ref={itiRef}
 					/>
 				</div>
 			</div>
-			<Button type="submit" disabled={showErrors && isFormSubmited}>
+			<Button type="submit" disabled={formState?.success}>
 				Sign up
 			</Button>
 			<div className="text-sm text-white leading-[140%]">
 				By entering your personal information and clicking the button, you agree to the website’s Privacy
 				Policy and Terms & Conditions.
 			</div>
+			{pending && (
+				<div className="absolute -inset-4 bg-slate-200/50 z-10 rounded-xl">
+					<Loader />
+				</div>
+			)}
 		</form>
 	);
 };
