@@ -9,20 +9,20 @@ export const Button = ({
 	onClick,
 	active,
 	href,
-	...props
+	disabled = false,
 }: {
 	children?: React.ReactNode;
-	className?: string;
-	href?: string;
-	type?: 'button' | 'submit';
 	size?: 'default' | 'full' | 'md';
 	variant?: 'primary' | 'gradient' | 'inline';
-	active?: boolean;
+	type?: 'button' | 'submit';
 	onClick?: () => void;
+	active?: boolean;
+	href?: string;
+	disabled?: boolean;
 }) => {
 	const buttonClassName = clsx(
 		`cursor-pointer relative inline-flex justify-center items-center text-center font-medium uppercase
-		leading-none px-5 py-2.5 min-h-11 rounded-lg transition-colors`,
+		leading-none px-5 py-2.5 min-h-11 rounded-lg transition-colors disabled:opacity-50 disabled:pointer-events-none`,
 		{
 			primary: 'bg-background text-white hover:bg-main-dark',
 			gradient: 'text-white bg-gradient-main transition-opacity hover:opacity-80',
@@ -39,11 +39,11 @@ export const Button = ({
 	);
 
 	return href ? (
-		<Link href={href} className={buttonClassName} {...props}>
+		<Link href={href} className={buttonClassName}>
 			{children}
 		</Link>
 	) : (
-		<button onClick={onClick} className={buttonClassName} type={type} {...props}>
+		<button onClick={onClick} className={buttonClassName} type={type} disabled={disabled}>
 			{children}
 		</button>
 	);

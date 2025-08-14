@@ -117,6 +117,10 @@ input[type='range']::-moz-range-track {
 	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight;
 }
 
+.iti__tel-input.error {
+	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight outline-2 -outline-offset-3 outline-red-500;
+}
+
 .iti__selected-dial-code {
 	@apply text-xl;
 }

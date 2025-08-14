@@ -1,46 +1,103 @@
 'use client';
 
-import { useActionState, useState } from 'react';
+import 'intl-tel-input/styles';
+
+import clsx from 'clsx';
+import { IntlTelInputRef } from 'intl-tel-input/react';
+import dynamic from 'next/dynamic';
+import { useActionState, useRef, useState } from 'react';
 
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
 
-import { mainAction } from './action';
-import { PhoneSelector } from './phone-selector';
+import { FormState, mainFormAction, MainFormData } from './main-form-action';
 
-export const MainForm = ({ formId }: { formId: string }) => {
+const IntlTelInput = dynamic(() => import('intl-tel-input/reactWithUtils'), {
+	ssr: false,
+	loading: () => <p>Loading...</p>,
+});
+
+const initState: FormState = {};
+
+export const MainForm = () => {
+	const itiRef = useRef<IntlTelInputRef | null>(null);
 	const [phoneIsValid, setPhoneIsValid] = useState(false);
 	const [countryCode, setCountryCode] = useState('');
-	const [state, formAction, pending] = useActionState(mainAction, { success: false });
 
-	console.log(state);
+	const [formState, formAction, pending] = useActionState(mainFormAction, initState);
+
+	const [userFormData, setUserFormData] = useState<
+		Partial<Omit<MainFormData, 'phoneIsValid' | 'countryCode'>>
+	>({
+		firstName: '',
+		lastName: '',
+		email: '',
+	});
+
+	const formData = {
+		...formState?.values,
+		...userFormData,
+	};
+
+	const isDirty = Object.entries(formData).some(([key, value]) => formState?.values?.[key] !== value);
+
+	const showErrors = !isDirty && !!formState?.values;
+	const showPhoneError = !!formState?.values && !phoneIsValid;
 
 	return (
 		<form className="grid gap-4" action={formAction}>
-			<input type="hidden" name="id" value={formId} />
-			<input type="hidden" name="country" value="country" />
-			<input type="hidden" name="subid" value="subid" />
-			<input type="hidden" name="siteName" value="sitename" />
-			<input type="hidden" name="language" value="lang" />
 			<input type="hidden" name="countryCode" value={countryCode} />
 			<input type="hidden" name="phoneIsValid" value={+phoneIsValid} />
 
 			<div className="grid gap-2">
 				<div className="grid sm:grid-cols-2 gap-2">
-					<Input name="firstName" type="text" placeholder="First Name" />
-					<Input name="lastName" type="text" placeholder="Last Name" />
+					<Input
+						name="firstName"
+						type="text"
+						value={formData.firstName}
+						onChange={(e) => setUserFormData((prev) => ({ ...prev, firstName: e.target.value }))}
+						placeholder="First Name"
+						error={!!formState?.errors?.firstName && showErrors}
+					/>
+					<Input
+						name="lastName"
+						type="text"
+						value={formData.lastName}
+						onChange={(e) => setUserFormData((prev) => ({ ...prev, lastName: e.target.value }))}
+						placeholder="Last Name"
+						error={!!formState?.errors?.lastName && showErrors}
+					/>
 				</div>
 				<div>
-					<Input name="email" type="email" placeholder="Your email" />
+					<Input
+						name="email"
+						type="email"
+						value={formData.email}
+						onChange={(e) => setUserFormData((prev) => ({ ...prev, email: e.target.value }))}
+						placeholder="Your email"
+						error={!!formState?.errors?.email && showErrors}
+					/>
 				</div>
 				<div>
-					<PhoneSelector
+					<IntlTelInput
+						inputProps={{
+							name: 'phone',
+							className: clsx('iti__tel-input', showPhoneError && 'error'),
+						}}
 						onChangeValidity={(isValid) => setPhoneIsValid(isValid)}
 						onChangeCountry={(country) => setCountryCode(country)}
+						initOptions={{
+							initialCountry: 'ru',
+							strictMode: true,
+							separateDialCode: true,
+						}}
+						ref={itiRef}
 					/>
 				</div>
 			</div>
-			<Button type="submit">Sign up</Button>
+			<Button type="submit" disabled={showErrors && showPhoneError}>
+				Sign up
+			</Button>
 			<div className="text-sm text-white leading-[140%]">
 				By entering your personal information and clicking the button, you agree to the website’s Privacy
 				Policy and Terms & Conditions.
