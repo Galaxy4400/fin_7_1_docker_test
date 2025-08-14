@@ -18,6 +18,11 @@ const IntlTelInput = dynamic(() => import('intl-tel-input/reactWithUtils'), {
 });
 
 const initState: FormState = {};
+const initFormData = {
+	firstName: '',
+	lastName: '',
+	email: '',
+};
 
 export const MainForm = () => {
 	const itiRef = useRef<IntlTelInputRef | null>(null);
@@ -26,13 +31,8 @@ export const MainForm = () => {
 
 	const [formState, formAction, pending] = useActionState(mainFormAction, initState);
 
-	const [userFormData, setUserFormData] = useState<
-		Partial<Omit<MainFormData, 'phoneIsValid' | 'countryCode'>>
-	>({
-		firstName: '',
-		lastName: '',
-		email: '',
-	});
+	const [userFormData, setUserFormData] =
+		useState<Partial<Omit<MainFormData, 'phoneIsValid' | 'countryCode'>>>(initFormData);
 
 	const formData = {
 		...formState?.values,
@@ -41,8 +41,9 @@ export const MainForm = () => {
 
 	const isDirty = Object.entries(formData).some(([key, value]) => formState?.values?.[key] !== value);
 
-	const showErrors = !isDirty && !!formState?.values;
-	const showPhoneError = !!formState?.values && !phoneIsValid;
+	const isFormSubmited = !!formState?.values;
+	const showErrors = (isFormSubmited && !isDirty) || !phoneIsValid;
+	const showPhoneError = isFormSubmited && !phoneIsValid;
 
 	return (
 		<form className="grid gap-4" action={formAction}>
@@ -95,7 +96,7 @@ export const MainForm = () => {
 					/>
 				</div>
 			</div>
-			<Button type="submit" disabled={showErrors && showPhoneError}>
+			<Button type="submit" disabled={showErrors && isFormSubmited}>
 				Sign up
 			</Button>
 			<div className="text-sm text-white leading-[140%]">

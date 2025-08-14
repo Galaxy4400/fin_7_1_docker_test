@@ -1,6 +1,6 @@
 'use server';
 
-import z from 'zod';
+import z, { success } from 'zod';
 
 const formDataSchema = z.object({
 	countryCode: z.string().min(1, 'Country code required'),
@@ -16,6 +16,7 @@ export type MainFormData = z.infer<typeof formDataSchema>;
 export type FormState = {
 	values?: { [k: string]: FormDataEntryValue };
 	errors?: { [K in keyof MainFormData]?: string[] };
+	success?: boolean;
 };
 
 export const mainFormAction = async (_: FormState | undefined, formData: FormData) => {
@@ -25,6 +26,8 @@ export const mainFormAction = async (_: FormState | undefined, formData: FormDat
 
 	if (!validatedData.success) {
 		const errors = z.flattenError(validatedData.error).fieldErrors;
-		return { values: rawFormData, errors: errors };
+		return { values: rawFormData, errors: errors, success: false };
 	}
+
+	return { success: true };
 };
