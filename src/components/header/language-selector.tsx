@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { RefObject, useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 
+import { routing } from '@/i18n/routing';
 import { Button } from '@/shared/ui/button';
 
 import { LanguageItem } from './language-item';
@@ -26,16 +27,9 @@ export const LanguageSelector = ({ className }: { className?: string }) => {
 				)}
 			>
 				<ul>
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={true} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
-					<LanguageItem href="#" isActive={false} value="en" />
+					{routing.locales.map((lang) => (
+						<LanguageItem href="/" locale={lang} value={lang} key={lang} />
+					))}
 				</ul>
 			</nav>
 		</div>

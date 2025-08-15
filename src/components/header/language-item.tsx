@@ -1,12 +1,15 @@
 import clsx from 'clsx';
-import Link from 'next/link';
+
+import { Link } from '@/i18n/navigation';
 
 export const LanguageItem = ({
 	isActive,
 	value,
+	locale,
 	href,
 }: {
 	href: string;
+	locale: string;
 	isActive?: boolean;
 	value: string;
 }) => {
@@ -14,6 +17,7 @@ export const LanguageItem = ({
 		<li>
 			<Link
 				className={clsx(' py-2 px-4 text-lg block', isActive ? 'bg-white text-main' : 'bg-main text-white')}
+				locale={locale}
 				href={href}
 			>
 				{value}
