@@ -114,11 +114,11 @@ input[type='range']::-moz-range-track {
 }
 
 .iti__tel-input {
-	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight;
+	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight disabled:opacity-70;
 }
 
 .iti__tel-input.error {
-	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight outline-2 -outline-offset-3 outline-[#ff0000];
+	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight outline-2 -outline-offset-3 outline-[#ff0000] disabled:opacity-70;
 }
 
 .iti__selected-dial-code {

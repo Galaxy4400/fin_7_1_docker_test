@@ -14,7 +14,7 @@ import { FormState, mainFormAction, MainFormData } from './main-form-action';
 
 const IntlTelInput = dynamic(() => import('intl-tel-input/reactWithUtils'), {
 	ssr: false,
-	loading: () => <p>Loading...</p>,
+	loading: () => <Input placeholder="Your phone" disabled />,
 });
 
 const initState: FormState = {};
@@ -24,14 +24,14 @@ const initFormData = {
 	email: '',
 };
 
-export const MainForm = () => {
+export const MainForm = ({ formId }: { formId: string }) => {
 	const [phoneIsValid, setPhoneIsValid] = useState(false);
-	const [countryCode, setCountryCode] = useState('');
+	const [countryPhoneCode, setCountryPhoneCode] = useState('');
 
 	const [formState, formAction, pending] = useActionState(mainFormAction, initState);
 
 	const [userFormData, setUserFormData] =
-		useState<Partial<Omit<MainFormData, 'phoneIsValid' | 'countryCode'>>>(initFormData);
+		useState<Partial<Pick<MainFormData, 'firstName' | 'lastName' | 'email'>>>(initFormData);
 
 	const formData = {
 		...formState?.values,
@@ -46,7 +46,11 @@ export const MainForm = () => {
 
 	return (
 		<form className="relative grid gap-4" action={formAction}>
-			<input type="hidden" name="countryCode" value={countryCode} />
+			<input type="hidden" name="formId" value={formId} />
+			<input type="hidden" name="countryCode" value={'GB'} />
+			<input type="hidden" name="subid" value={'subid'} />
+			<input type="hidden" name="language" value={'en'} />
+			<input type="hidden" name="countryPhoneCode" value={countryPhoneCode} />
 			<input type="hidden" name="phoneIsValid" value={+phoneIsValid} />
 
 			<div className="grid gap-2">
@@ -58,6 +62,7 @@ export const MainForm = () => {
 						onChange={(e) => setUserFormData((prev) => ({ ...prev, firstName: e.target.value }))}
 						placeholder="First Name"
 						error={!!formState?.errors?.firstName && showErrors}
+						disabled={formState?.success}
 					/>
 					<Input
 						name="lastName"
@@ -66,6 +71,7 @@ export const MainForm = () => {
 						onChange={(e) => setUserFormData((prev) => ({ ...prev, lastName: e.target.value }))}
 						placeholder="Last Name"
 						error={!!formState?.errors?.lastName && showErrors}
+						disabled={formState?.success}
 					/>
 				</div>
 				<div>
@@ -76,6 +82,7 @@ export const MainForm = () => {
 						onChange={(e) => setUserFormData((prev) => ({ ...prev, email: e.target.value }))}
 						placeholder="Your email"
 						error={!!formState?.errors?.email && showErrors}
+						disabled={formState?.success}
 					/>
 				</div>
 				<div>
@@ -85,7 +92,8 @@ export const MainForm = () => {
 							className: clsx('iti__tel-input', showPhoneError && 'error'),
 						}}
 						onChangeValidity={(isValid) => setPhoneIsValid(isValid)}
-						onChangeCountry={(country) => setCountryCode(country)}
+						onChangeCountry={(country) => setCountryPhoneCode(country)}
+						disabled={formState?.success}
 						initOptions={{
 							initialCountry: 'ru',
 							strictMode: true,
