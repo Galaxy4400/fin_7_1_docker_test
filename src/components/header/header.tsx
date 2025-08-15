@@ -1,41 +1,63 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 
 import { useLockBodyScroll } from '@/shared/lib/use-lock-body-scroll';
 import { Button } from '@/shared/ui/button';
-import { Container } from '@/shared/ui/container';
 
-import { LanguageSelector } from './language-selector';
-import { Menu } from './menu';
-import { MenuButton } from './menu-button';
-import { MenuMobile } from './menu-mobile';
+import { PAGES } from './constants';
+import { HeaderLayout } from './ui/header-layout';
+import { LanguageSelector } from './ui/language-selector';
+import { Logo } from './ui/logo';
+import { Menu } from './ui/menu';
+import { MenuItem } from './ui/menu-item';
+import { MenuMobile } from './ui/menu-mobile';
 
 export const Header = () => {
 	const [showMenu, setShowMenu] = useState(false);
 	useLockBodyScroll(showMenu);
 
 	return (
-		<>
-			<header className="bg-background border-b border-main z-100 py-2.5">
-				<Container className="text-white flex justify-between items-center gap-2.5">
-					<Link className="text-nowrap uppercase text-xl md:text-2xl text-white" href="#">
-						BLUE ORION
-					</Link>
-					<Menu />
-					<div className="flex gap-4">
-						<div className="hidden sm:block">
-							<Button href="#" variant="inline" size="md">
+		<HeaderLayout
+			logo={<Logo />}
+			menu={
+				<Menu
+					items={PAGES.map((page) => (
+						<MenuItem href={page.href} key={page.name}>
+							{page.name}
+						</MenuItem>
+					))}
+				/>
+			}
+			actions={
+				<Button href="#" variant="inline" size="md">
+					Sign up
+				</Button>
+			}
+			langSelector={<LanguageSelector />}
+			menuButton={
+				<Button variant="inline" onClick={() => setShowMenu((prev) => !prev)} active={showMenu}>
+					Menu
+				</Button>
+			}
+			menuMobile={
+				<MenuMobile
+					isOpen={showMenu}
+					actions={
+						<>
+							<Button href="#" variant="gradient">
 								Sign up
 							</Button>
-						</div>
-						<LanguageSelector className="hidden sm:block" />
-						<MenuButton isOpen={showMenu} onClick={() => setShowMenu((prev) => !prev)} />
-					</div>
-				</Container>
-			</header>
-			<MenuMobile isOpen={showMenu} />
-		</>
+							<LanguageSelector />
+						</>
+					}
+					items={PAGES.map((page) => (
+						<MenuItem href={page.href} key={page.name}>
+							{page.name}
+						</MenuItem>
+					))}
+				/>
+			}
+		/>
 	);
 };

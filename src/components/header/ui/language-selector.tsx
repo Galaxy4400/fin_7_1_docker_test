@@ -1,24 +1,25 @@
 'use client';
 
 import clsx from 'clsx';
+import { useLocale } from 'next-intl';
 import { RefObject, useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 
+import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
 import { Button } from '@/shared/ui/button';
-
-import { LanguageItem } from './language-item';
 
 export const LanguageSelector = ({ className }: { className?: string }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const ref = useRef<HTMLDivElement | null>(null);
+	const currentLang = useLocale();
 
 	useOnClickOutside(ref as RefObject<HTMLElement>, () => setIsOpen(false));
 
 	return (
 		<div className={clsx(className, 'relative')} ref={ref}>
 			<Button variant="inline" onClick={() => setIsOpen((prev) => !prev)}>
-				En
+				{currentLang}
 			</Button>
 			<nav
 				className={clsx(
@@ -28,7 +29,18 @@ export const LanguageSelector = ({ className }: { className?: string }) => {
 			>
 				<ul>
 					{routing.locales.map((lang) => (
-						<LanguageItem href="/" locale={lang} value={lang} key={lang} />
+						<li key={lang}>
+							<Link
+								className={clsx(
+									' py-2 px-4 text-lg block',
+									lang === currentLang ? 'bg-white text-main' : 'bg-main text-white',
+								)}
+								locale={lang}
+								href="/"
+							>
+								{lang}
+							</Link>
+						</li>
 					))}
 				</ul>
 			</nav>
