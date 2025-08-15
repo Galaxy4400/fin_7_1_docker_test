@@ -3,7 +3,7 @@ import localFont from 'next/font/local';
 export const stSimpleSquare = localFont({
 	src: [
 		{
-			path: '../shared/fonts/STSimpleSquareRegular.woff2',
+			path: '../fonts/STSimpleSquareRegular.woff2',
 			weight: '400',
 			style: 'normal',
 		},
@@ -15,17 +15,17 @@ export const stSimpleSquare = localFont({
 export const robotoSlab = localFont({
 	src: [
 		{
-			path: '../shared/fonts/RobotoSlab-Regular.woff2',
+			path: '../fonts/RobotoSlab-Regular.woff2',
 			weight: '400',
 			style: 'normal',
 		},
 		{
-			path: '../shared/fonts/RobotoSlab-Medium.woff2',
+			path: '../fonts/RobotoSlab-Medium.woff2',
 			weight: '500',
 			style: 'normal',
 		},
 		{
-			path: '../shared/fonts/RobotoSlab-SemiBold.woff2',
+			path: '../fonts/RobotoSlab-SemiBold.woff2',
 			weight: '600',
 			style: 'normal',
 		},

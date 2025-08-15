@@ -3,8 +3,7 @@ import '@/shared/globals.css';
 import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header/header';
 import { GeoProvider } from '@/providers/geo-provider';
-
-import { robotoSlab, stSimpleSquare } from './fonts';
+import { robotoSlab, stSimpleSquare } from '@/shared/lib/fonts';
 
 export default function RootLayout({
 	children,
