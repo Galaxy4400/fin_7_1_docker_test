@@ -28,7 +28,6 @@ export const GeoProvider = ({ children }: { children: ReactNode }) => {
 			try {
 				// const geoResponse = await fetch('https://ipapi.co/json/');
 				// const geoData = (await geoResponse.json()) as { country: CountryCode };
-				const geoData = { country: 'US' } as { country: CountryCode };
 
 				if (!geoData?.country) return initData;
 

@@ -4,10 +4,14 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 
 import { Footer } from '@/components/footer/footer';
-import { Header } from '@/components/header/header';
+import { Header } from '@/components/header';
 import { routing } from '@/i18n/routing';
 import { GeoProvider } from '@/providers/geo-provider';
 import { robotoSlab, stSimpleSquare } from '@/shared/lib/fonts';
+
+export async function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }));
+}
 
 export default async function RootLayout({
 	children,
