@@ -2,8 +2,6 @@
 
 import z from 'zod';
 
-const SITE_NAME = process.env.SITE_NAME;
-
 const formDataSchema = z.object({
 	formId: z.string().min(1, 'Form id required'),
 	countryCode: z.string().min(1, 'Country code required'),

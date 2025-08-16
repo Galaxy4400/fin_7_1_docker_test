@@ -6,7 +6,7 @@ import { RefObject, useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 
 import { Link } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
+import { AVAILABLE_LANGUAGES } from '@/shared/constants';
 import { Button } from '@/shared/ui/button';
 
 export const LanguageSelector = ({ className }: { className?: string }) => {
@@ -28,7 +28,7 @@ export const LanguageSelector = ({ className }: { className?: string }) => {
 				)}
 			>
 				<ul>
-					{routing.locales.map((lang) => (
+					{AVAILABLE_LANGUAGES.map((lang) => (
 						<li key={lang}>
 							<Link
 								className={clsx(

@@ -5,12 +5,12 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 
 import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header';
-import { routing } from '@/i18n/routing';
 import { GeoProvider } from '@/providers/geo-provider';
+import { AVAILABLE_LANGUAGES } from '@/shared/constants';
 import { robotoSlab, stSimpleSquare } from '@/shared/lib/fonts';
 
 export async function generateStaticParams() {
-	return routing.locales.map((locale) => ({ locale }));
+	return AVAILABLE_LANGUAGES.map((locale) => ({ locale }));
 }
 
 export default async function RootLayout({
@@ -22,7 +22,7 @@ export default async function RootLayout({
 }>) {
 	const { locale } = await params;
 
-	if (!hasLocale(routing.locales, locale)) {
+	if (!hasLocale(AVAILABLE_LANGUAGES, locale)) {
 		notFound();
 	}
 
