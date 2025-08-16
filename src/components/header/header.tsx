@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 
+import { PAGES } from '@/shared/constants';
 import { useLockBodyScroll } from '@/shared/lib/use-lock-body-scroll';
 import { Button } from '@/shared/ui/button';
 
-import { PAGES } from './constants';
 import { HeaderLayout } from './ui/header-layout';
 import { LanguageSelector } from './ui/language-selector';
 import { Logo } from './ui/logo';

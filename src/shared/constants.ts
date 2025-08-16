@@ -1,7 +1,4 @@
-export type Page = {
-	name: string;
-	href: string;
-};
+import { Page } from './types';
 
 export const PAGES: Page[] = [
 	{ name: 'Product', href: '#' },
@@ -9,4 +6,9 @@ export const PAGES: Page[] = [
 	{ name: 'FAQ', href: '#' },
 	{ name: 'Blog', href: '#' },
 	{ name: 'Contacts', href: '#' },
+];
+
+export const SUB_PAGES: Page[] = [
+	{ name: 'Privacy Policy', href: '#' },
+	{ name: 'Conditions of Use', href: '#' },
 ];
