@@ -4,9 +4,7 @@ import { useState } from 'react';
 
 import { useGeo } from '@/providers/geo-provider';
 import { numFormat } from '@/shared/lib/num-format';
-import { Container } from '@/shared/ui/container';
-import { H2 } from '@/shared/ui/h2';
-import { Input } from '@/shared/ui/input';
+import { Container, H2, Input } from '@/shared/ui';
 
 const RATE = 0.05;
 

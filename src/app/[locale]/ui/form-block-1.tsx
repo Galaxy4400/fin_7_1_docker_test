@@ -1,8 +1,5 @@
-import { Container } from '@/shared/ui/container';
-import { H2 } from '@/shared/ui/h2';
-import { P } from '@/shared/ui/p';
-
-import { MainForm } from '../main-form/main-form';
+import { MainForm } from '@/components/main-form';
+import { Container, H2, P } from '@/shared/ui';
 
 export const FormBlock1 = () => {
 	return (

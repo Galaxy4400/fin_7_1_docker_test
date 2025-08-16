@@ -6,12 +6,7 @@ import { PAGES } from '@/shared/constants';
 import { useLockBodyScroll } from '@/shared/lib/use-lock-body-scroll';
 import { Button } from '@/shared/ui/button';
 
-import { HeaderLayout } from './ui/header-layout';
-import { LanguageSelector } from './ui/language-selector';
-import { Logo } from './ui/logo';
-import { Menu } from './ui/menu';
-import { MenuItem } from './ui/menu-item';
-import { MenuMobile } from './ui/menu-mobile';
+import { HeaderLayout, LanguageSelector, Logo, Menu, MenuItem, MenuMobile } from './ui';
 
 export const Header = () => {
 	const [showMenu, setShowMenu] = useState(false);

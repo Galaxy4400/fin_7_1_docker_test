@@ -1,12 +1,12 @@
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 
 import mainSrc from '@/shared/images/main.png';
-import { Button } from '@/shared/ui/button';
-import { Container } from '@/shared/ui/container';
-import { H1 } from '@/shared/ui/h1';
-import { P } from '@/shared/ui/p';
+import { Button, Container, H1, P } from '@/shared/ui';
 
-export const Head = () => {
+export const Head = async () => {
+	const t = await getTranslations();
+
 	return (
 		<div
 			className="text-white bg-background min-h-[540px] md:py-6 overflow-hidden flex flex-col relative pt-12
@@ -19,10 +19,8 @@ export const Head = () => {
 			></div>
 			<Container className="grid grid-cols-1 h-full grow content-center relative md:grid-cols-2">
 				<div className="grid gap-8 content-center">
-					<H1>AI-POWER in CRYPTO</H1>
-					<P>
-						Blue Orion automates trading across 65+ cryptocurrencies in 98+ countries. Start with just $250.
-					</P>
+					<H1>{t('title')}</H1>
+					<P>{t('label')}</P>
 					<div>
 						<Button href="#" variant="gradient" size="md">
 							SIGN UP

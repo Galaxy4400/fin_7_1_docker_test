@@ -1,10 +1,6 @@
 import { PAGES, SUB_PAGES } from '@/shared/constants';
 
-import { FooterLayout } from './ui/footer-layout';
-import { Logo } from './ui/logo';
-import { Menu } from './ui/menu';
-import { MenuItem } from './ui/menu-item';
-import { Social } from './ui/social';
+import { FooterLayout, Logo, Menu, MenuItem, Social } from './ui';
 
 export const Footer = () => {
 	return (
