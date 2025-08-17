@@ -1,4 +1,4 @@
-import { Calculator, FormBlock1, FormBlock2, Guarantees, Head, Partners } from './ui';
+import { Advantages, Calculator, FormBlock1, FormBlock2, Guarantees, Head, Partners } from './ui';
 
 export default function HomePage() {
 	return (
@@ -9,6 +9,7 @@ export default function HomePage() {
 			<Partners />
 			<Guarantees />
 			<FormBlock2 />
+			<Advantages />
 		</>
 	);
 }
