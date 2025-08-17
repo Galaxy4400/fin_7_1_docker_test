@@ -24,7 +24,7 @@ const initFormData = {
 	email: '',
 };
 
-export const MainForm = ({ formId }: { formId: string }) => {
+export const MainForm = ({ formId, variant }: { formId: string; variant?: 'default' | 'spec' }) => {
 	const [phoneIsValid, setPhoneIsValid] = useState(false);
 	const [countryPhoneCode, setCountryPhoneCode] = useState('');
 
@@ -102,10 +102,19 @@ export const MainForm = ({ formId }: { formId: string }) => {
 					/>
 				</div>
 			</div>
-			<Button type="submit" disabled={formState?.success}>
+			<Button
+				type="submit"
+				disabled={formState?.success}
+				variant={variant === 'spec' ? 'gradient' : 'primary'}
+			>
 				Sign up
 			</Button>
-			<div className="text-sm text-white leading-[140%]">
+			<div
+				className={clsx(
+					'text-sm leading-[140%]',
+					variant === 'spec' ? 'text-[#A7A7A7] text-center' : 'text-white',
+				)}
+			>
 				By entering your personal information and clicking the button, you agree to the website’s Privacy
 				Policy and Terms & Conditions.
 			</div>
