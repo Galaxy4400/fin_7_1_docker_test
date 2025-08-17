@@ -20,11 +20,11 @@ export const Input = ({
 		<input
 			className={clsx(
 				className,
-				'block w-full text-xl border leading-tight py-2.5 px-4 h-[46px] rounded-lg disabled:opacity-70',
+				'block h-[46px] w-full rounded-lg border px-4 py-2.5 text-xl leading-tight disabled:opacity-70',
 				{
 					default: clsx(
-						'text-black bg-white border border-white',
-						error && 'outline-2 outline-[#ff0000] -outline-offset-3',
+						'border border-white bg-white text-black',
+						error && 'outline-2 -outline-offset-3 outline-[#ff0000]',
 					),
 					special: 'text-main bg-white border border-main',
 				}[variant],

@@ -3,9 +3,9 @@ import { Container, H2, P } from '@/shared/ui';
 
 export const FormBlock1 = () => {
 	return (
-		<div className="py-12 md:py-20 bg-gradient-main">
-			<Container className="grid md:grid-cols-2 grid-cols-1 gap-x-[60px] gap-y-6">
-				<div className="text-white text-center md:text-left grid md:gap-8 gap-4 content-center">
+		<div className="bg-gradient-main py-12 md:py-20">
+			<Container className="grid grid-cols-1 gap-x-[60px] gap-y-6 md:grid-cols-2">
+				<div className="grid content-center gap-4 text-center text-white md:gap-8 md:text-left">
 					<H2>SIGN UP now</H2>
 					<P>Start now and praise yourself tomorrow!</P>
 				</div>

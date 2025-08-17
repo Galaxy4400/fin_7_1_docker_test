@@ -11,7 +11,7 @@ export const MenuItem = ({
 }) => {
 	return (
 		<li className={className}>
-			<Link className="text-white leading-[140%] py-1 px-2 transition-colors hover:text-main" href={href}>
+			<Link className="hover:text-main px-2 py-1 leading-[140%] text-white transition-colors" href={href}>
 				{children}
 			</Link>
 		</li>

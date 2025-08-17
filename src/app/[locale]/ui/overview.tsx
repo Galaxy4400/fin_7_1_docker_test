@@ -2,8 +2,7 @@ import Image from 'next/image';
 
 import overviewSrc1 from '@/shared/images/overview-1.png';
 import overviewSrc2 from '@/shared/images/overview-2.png';
-import { Container, H2, P, StarIcon } from '@/shared/ui';
-import { H3 } from '@/shared/ui/h3';
+import { Container, H2, H3, P, StarIcon } from '@/shared/ui';
 
 export const Overview = () => {
 	return (
@@ -15,9 +14,9 @@ export const Overview = () => {
 						{`Reliable crypto trading platform for beginners and experienced traders. Easy registration, transparent terms, professional support. Intuitive interface, comprehensive tools, robust security, educational resources for successful cryptocurrency investment and trading activities worldwide.`}
 					</P>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4">
-					<div className="grid grid-cols-[auto_1fr] gap-3 md:gap-6 content-start">
-						<div className="bg-background outline-hidden rounded-lg">
+				<div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-4">
+					<div className="grid grid-cols-[auto_1fr] content-start gap-3 md:gap-6">
+						<div className="bg-background rounded-lg outline-hidden">
 							<Image className="w-[80px] md:w-[132px]" src={overviewSrc1} alt="overview-1" />
 						</div>
 						<div className="grid content-center gap-1.5 md:gap-3">
@@ -26,7 +25,7 @@ export const Overview = () => {
 						</div>
 					</div>
 					<div className="grid grid-cols-[auto_1fr] gap-3 md:gap-6">
-						<div className="bg-background outline-hidden rounded-lg">
+						<div className="bg-background rounded-lg outline-hidden">
 							<Image className="w-[80px] md:w-[132px]" src={overviewSrc2} alt="overview-2" />
 						</div>
 						<div className="grid content-center gap-1.5 md:gap-3">

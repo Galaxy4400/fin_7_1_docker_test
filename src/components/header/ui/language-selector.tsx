@@ -23,8 +23,8 @@ export const LanguageSelector = ({ className }: { className?: string }) => {
 			</Button>
 			<nav
 				className={clsx(
-					'absolute top-full max-h-50 overflow-y-scroll rounded-md mt-5 transition-all',
-					isOpen ? 'opacity-100 visible' : 'opacity-0 pointer-events-none invisible',
+					'absolute top-full mt-5 max-h-50 overflow-y-scroll rounded-md transition-all',
+					isOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0',
 				)}
 			>
 				<ul>
@@ -32,8 +32,8 @@ export const LanguageSelector = ({ className }: { className?: string }) => {
 						<li key={lang}>
 							<Link
 								className={clsx(
-									' py-2 px-4 text-lg block',
-									lang === currentLang ? 'bg-white text-main' : 'bg-main text-white',
+									' block px-4 py-2 text-lg',
+									lang === currentLang ? 'text-main bg-white' : 'bg-main text-white',
 								)}
 								locale={lang}
 								href="/"

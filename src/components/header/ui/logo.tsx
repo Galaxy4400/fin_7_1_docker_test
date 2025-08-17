@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export const Logo = () => {
 	return (
-		<Link className="text-nowrap uppercase text-xl md:text-2xl text-white" href="/">
+		<Link className="text-xl text-nowrap text-white uppercase md:text-2xl" href="/">
 			BLUE ORION
 		</Link>
 	);

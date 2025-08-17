@@ -10,17 +10,17 @@ export const FooterLayout = ({
 	socials: React.ReactNode;
 }) => {
 	return (
-		<footer className="bg-background py-12 border-t border-main">
+		<footer className="bg-background border-main border-t py-12">
 			<Container className="grid gap-6">
-				<div className="flex gap-8 flex-col md:flex-row items-center">
+				<div className="flex flex-col items-center gap-8 md:flex-row">
 					<div className="grid gap-6">
 						{logo}
-						<div className="gap-9 hidden md:flex">{socials}</div>
+						<div className="hidden gap-9 md:flex">{socials}</div>
 					</div>
-					<div className="flex justify-center items-center grow">{menu}</div>
+					<div className="flex grow items-center justify-center">{menu}</div>
 				</div>
-				<div className="flex gap-9 md:hidden justify-center">{socials}</div>
-				<div className="text-sm text-gray">
+				<div className="flex justify-center gap-9 md:hidden">{socials}</div>
+				<div className="text-gray text-sm">
 					Risk Disclosure: Blue Orion is an advanced technological platform that facilitates connections
 					between traders and licensed brokers for trading cryptocurrencies, currency pairs, Contracts for
 					Difference (CFDs), stocks, and other financial instruments. All forms of trading and investment

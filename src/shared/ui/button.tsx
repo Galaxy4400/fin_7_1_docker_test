@@ -21,14 +21,14 @@ export const Button = ({
 	disabled?: boolean;
 }) => {
 	const buttonClassName = clsx(
-		`cursor-pointer relative inline-flex justify-center items-center text-center font-medium uppercase
-		leading-none px-5 py-2.5 min-h-11 rounded-lg transition-colors disabled:opacity-50 disabled:pointer-events-none`,
+		`relative inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg px-5
+		py-2.5 text-center leading-none font-medium uppercase transition-colors disabled:pointer-events-none disabled:opacity-50`,
 		{
 			primary: 'bg-background text-white hover:bg-main-dark',
 			gradient: 'text-white bg-gradient-main transition-opacity hover:opacity-80',
 			inline: clsx(
-				'text-main border border-main hover:bg-main hover:text-white',
-				active ? 'bg-main text-white' : 'bg-transparent text-main',
+				'text-main border-main hover:bg-main border hover:text-white',
+				active ? 'bg-main text-white' : 'text-main bg-transparent',
 			),
 		}[variant],
 		{

@@ -3,6 +3,7 @@ import { globalIgnores } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 import prettier from 'eslint-plugin-prettier';
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort';
+import tailwind from 'eslint-plugin-tailwindcss';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -21,6 +22,7 @@ const eslintConfig = [
 	{
 		plugins: {
 			prettier,
+			tailwind,
 			import: importPlugin,
 			'simple-import-sort': simpleImportSortPlugin,
 		},
@@ -32,6 +34,7 @@ const eslintConfig = [
 			'import/no-cycle': 'warn',
 			'import/no-duplicates': 'error',
 			'@typescript-eslint/no-explicit-any': 'error',
+			'tailwind/classnames-order': 'warn',
 		},
 	},
 ];

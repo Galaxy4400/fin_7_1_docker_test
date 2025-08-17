@@ -54,7 +54,7 @@ export const MainForm = ({ formId, variant }: { formId: string; variant?: 'defau
 			<input type="hidden" name="phoneIsValid" value={+phoneIsValid} />
 
 			<div className="grid gap-2">
-				<div className="grid sm:grid-cols-2 gap-2">
+				<div className="grid gap-2 sm:grid-cols-2">
 					<Input
 						name="firstName"
 						type="text"
@@ -112,14 +112,14 @@ export const MainForm = ({ formId, variant }: { formId: string; variant?: 'defau
 			<div
 				className={clsx(
 					'text-sm leading-[140%]',
-					variant === 'spec' ? 'text-[#A7A7A7] text-center' : 'text-white',
+					variant === 'spec' ? 'text-center text-[#A7A7A7]' : 'text-white',
 				)}
 			>
 				By entering your personal information and clicking the button, you agree to the website’s Privacy
 				Policy and Terms & Conditions.
 			</div>
 			{pending && (
-				<div className="absolute -inset-4 bg-slate-200/50 z-10 rounded-xl">
+				<div className="absolute -inset-4 z-10 rounded-xl bg-slate-200/50">
 					<Loader />
 				</div>
 			)}

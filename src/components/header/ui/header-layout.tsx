@@ -17,8 +17,8 @@ export const HeaderLayout = ({
 }) => {
 	return (
 		<>
-			<header className="bg-background border-b border-main z-100 py-2.5">
-				<Container className="text-white flex justify-between items-center gap-2.5">
+			<header className="bg-background border-main z-100 border-b py-2.5">
+				<Container className="flex items-center justify-between gap-2.5 text-white">
 					{logo}
 					{menu}
 					<div className="flex gap-4">

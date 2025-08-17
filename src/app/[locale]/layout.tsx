@@ -29,7 +29,7 @@ export default async function RootLayout({
 	return (
 		<html lang={locale}>
 			<body
-				className={`${robotoSlab.className} ${stSimpleSquare.variable} antialiased min-h-screen flex flex-col`}
+				className={`${robotoSlab.className} ${stSimpleSquare.variable} flex min-h-screen flex-col antialiased`}
 			>
 				<NextIntlClientProvider>
 					<Header />

@@ -9,16 +9,15 @@ export const Head = async () => {
 
 	return (
 		<div
-			className="text-white bg-background min-h-[540px] md:py-6 overflow-hidden flex flex-col relative pt-12
-				pb-24"
+			className="bg-background relative flex min-h-[540px] flex-col overflow-hidden pt-12 pb-24 text-white
+				md:py-6"
 		>
 			<div
-				className="absolute w-[160px] h-[217] md:w-[320px] md:h-[434px] rotate-[53.206deg] top-[90%]
-					left-[80%] -translate-x-1/2 -translate-y-1/2 rounded-[434px] bg-main filter md:blur-[100px]
-					blur-[50px]"
+				className="bg-main absolute top-[90%] left-[80%] h-[217] w-[160px] -translate-x-1/2 -translate-y-1/2
+					rotate-[53.206deg] rounded-[434px] blur-[50px] filter md:h-[434px] md:w-[320px] md:blur-[100px]"
 			></div>
-			<Container className="grid grid-cols-1 h-full grow content-center relative md:grid-cols-2">
-				<div className="grid gap-8 content-center">
+			<Container className="relative grid h-full grow grid-cols-1 content-center md:grid-cols-2">
+				<div className="grid content-center gap-8">
 					<H1>{t('title')}</H1>
 					<P>{t('label')}</P>
 					<div>
@@ -27,7 +26,7 @@ export const Head = async () => {
 						</Button>
 					</div>
 				</div>
-				<div className="flex justify-center items-center pt-5 md:pt-0">
+				<div className="flex items-center justify-center pt-5 md:pt-0">
 					<Image src={mainSrc} alt="main"></Image>
 				</div>
 			</Container>

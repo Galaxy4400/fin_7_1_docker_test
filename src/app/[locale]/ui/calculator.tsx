@@ -25,22 +25,22 @@ export const Calculator = () => {
 		<div className="py-12 md:py-20">
 			<Container className="grid gap-3 md:gap-12" size="sm">
 				<H2 className="text-center">See Your Potential Earnings in 30 Seconds!</H2>
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8">
+				<div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-8">
 					<div>
 						<div className="relative">
 							<Input
-								className="pr-14 mb-4 font-bold"
+								className="mb-4 pr-14 font-bold"
 								value={amount}
 								type="number"
 								variant="special"
 								onChange={(e) => setAmount(Number(e.target.value))}
 							/>
-							<span className="text-2xl text-main font-bold absolute right-2 top-1/2 -translate-1/2">
+							<span className="text-main absolute top-1/2 right-2 -translate-1/2 text-2xl font-bold">
 								{data.localCurrencySymbol}
 							</span>
 						</div>
-						<div className="text-base md:text-xl leading-[140%]">Select the period to grow</div>
-						<div className="text-base md:text-xl font-medium leading-[130%]">{days} days</div>
+						<div className="text-base leading-[140%] md:text-xl">Select the period to grow</div>
+						<div className="text-base leading-[130%] font-medium md:text-xl">{days} days</div>
 						<input
 							id="range"
 							type="range"
@@ -51,11 +51,11 @@ export const Calculator = () => {
 						></input>
 					</div>
 					<div
-						className="text-center bg-gradient-main p-3 md:p-6 grid content-center gap-3 md:gap-6
-							rounded-[10px] md:rounded-[20px] text-white"
+						className="bg-gradient-main grid content-center gap-3 rounded-[10px] p-3 text-center text-white
+							md:gap-6 md:rounded-[20px] md:p-6"
 					>
-						<div className="text-base md:text-xl leading-[140%]">Your potential future balance</div>
-						<div className="font-special text-[32px] md:text-[46px] leading-none">
+						<div className="text-base leading-[140%] md:text-xl">Your potential future balance</div>
+						<div className="font-special text-[32px] leading-none md:text-[46px]">
 							{calculateCompoundInterest()}
 						</div>
 					</div>

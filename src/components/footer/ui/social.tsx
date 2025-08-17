@@ -10,7 +10,7 @@ export const Social = ({ icon }: { icon: 1 | 2 | 3 }) => {
 	}[icon];
 
 	return (
-		<div className="w-11 h-11 inline-flex justify-center items-center text-white bg-gradient-main rounded-md">
+		<div className="bg-gradient-main inline-flex h-11 w-11 items-center justify-center rounded-md text-white">
 			<Icon />
 		</div>
 	);

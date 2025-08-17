@@ -12,9 +12,9 @@ export const MenuMobile = ({
 	return (
 		<div
 			className={clsx(
-				`z-50 fixed top-0 left-0 w-full h-screen transition-all duration-300 bg-background flex items-center
-				justify-center`,
-				isOpen ? 'opacity-100 visible' : 'opacity-0 pointer-events-none invisible',
+				`bg-background fixed top-0 left-0 z-50 flex h-screen w-full items-center justify-center transition-all
+				duration-300`,
+				isOpen ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0',
 			)}
 		>
 			<div className="grid gap-13">
