@@ -1,3 +1,4 @@
+export * from './arrow-icon';
 export * from './button';
 export * from './container';
 export * from './h1';
@@ -7,4 +8,5 @@ export * from './input';
 export * from './list-item-mark';
 export * from './loader';
 export * from './p';
+export * from './spoiler';
 export * from './star-icon';
