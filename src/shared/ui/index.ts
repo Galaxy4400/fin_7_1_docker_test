@@ -6,3 +6,4 @@ export * from './input';
 export * from './list-item-mark';
 export * from './loader';
 export * from './p';
+export * from './star-icon';
