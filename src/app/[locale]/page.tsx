@@ -4,6 +4,7 @@ import {
 	Faq,
 	FormBlock1,
 	FormBlock2,
+	FormBlock3,
 	Guarantees,
 	Head,
 	Overview,
@@ -24,6 +25,7 @@ export default function HomePage() {
 			<Overview />
 			<Steps />
 			<Faq />
+			<FormBlock3 />
 		</>
 	);
 }

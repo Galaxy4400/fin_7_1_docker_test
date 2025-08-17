@@ -28,11 +28,7 @@ export const Faq = () => {
 							<H4>Is my money safe?</H4>
 							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
-						<SpoilerContent
-							className="max-h-[999px] overflow-hidden transition-[max-height] duration-500
-								aria-hidden:max-h-0"
-							isManual={true}
-						>
+						<SpoilerContent>
 							<div className="pt-2.5 text-sm md:pt-4 md:text-base">
 								Your security is our priority. Blue Orion uses bank-grade encryption, two-factor
 								authentication (2FA), and cold storage for digital assets. We comply with strict financial
@@ -49,11 +45,7 @@ export const Faq = () => {
 							<H4>Is crypto-trading complicated?</H4>
 							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
-						<SpoilerContent
-							className="max-h-[999px] overflow-hidden transition-[max-height] duration-500
-								aria-hidden:max-h-0"
-							isManual={true}
-						>
+						<SpoilerContent>
 							<div className="pt-2.5 text-sm md:pt-4 md:text-base">
 								Your security is our priority. Blue Orion uses bank-grade encryption, two-factor
 								authentication (2FA), and cold storage for digital assets. We comply with strict financial
@@ -70,11 +62,7 @@ export const Faq = () => {
 							<H4>How fast are withdrawals?</H4>
 							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
-						<SpoilerContent
-							className="max-h-[999px] overflow-hidden transition-[max-height] duration-500
-								aria-hidden:max-h-0"
-							isManual={true}
-						>
+						<SpoilerContent>
 							<div className="pt-2.5 text-sm md:pt-4 md:text-base">
 								Your security is our priority. Blue Orion uses bank-grade encryption, two-factor
 								authentication (2FA), and cold storage for digital assets. We comply with strict financial
