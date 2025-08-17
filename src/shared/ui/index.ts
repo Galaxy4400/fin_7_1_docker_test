@@ -3,5 +3,6 @@ export * from './container';
 export * from './h1';
 export * from './h2';
 export * from './input';
+export * from './list-item-mark';
 export * from './loader';
 export * from './p';
