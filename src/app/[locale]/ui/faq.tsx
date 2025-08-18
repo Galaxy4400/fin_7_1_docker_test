@@ -19,56 +19,50 @@ export const Faq = () => {
 				<div className="grid gap-4 md:gap-8">
 					<H2 className="md:text-center">Crypto FAQ</H2>
 				</div>
-				<Spoiler className="grid gap-3 md:gap-6" active={2}>
-					<SpoilerItem className="border-b-gray border-b px-3 py-2 md:px-6 md:py-2.5" itemName={1}>
+				<Spoiler className="grid gap-3 md:gap-6">
+					<SpoilerItem className="border-b-gray border-b" itemName={1}>
 						<SpoilerButton
 							className="group hover:text-main aria-expanded:text-main flex w-full cursor-pointer
-								justify-between text-left transition-colors"
+								justify-between px-3 py-2 text-left transition-colors md:px-6 md:py-2.5"
 						>
 							<H4>Is my money safe?</H4>
 							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
-						<SpoilerContent>
-							<div className="pt-2.5 text-sm md:pt-4 md:text-base">
-								Your security is our priority. Blue Orion uses bank-grade encryption, two-factor
-								authentication (2FA), and cold storage for digital assets. We comply with strict financial
-								regulations in [Country] and undergo regular audits. Funds are insured against unauthorized
-								access, so you can trade with confidence.
-							</div>
+						<SpoilerContent className="px-3 pt-0.5 pb-1.5 text-sm md:px-6 md:pt-1.5 md:pb-2.5 md:text-base">
+							Your security is our priority. Blue Orion uses bank-grade encryption, two-factor authentication
+							(2FA), and cold storage for digital assets. We comply with strict financial regulations in
+							[Country] and undergo regular audits. Funds are insured against unauthorized access, so you can
+							trade with confidence.
 						</SpoilerContent>
 					</SpoilerItem>
-					<SpoilerItem className="border-b-gray border-b px-3 py-2 md:px-6 md:py-2.5" itemName={2}>
+					<SpoilerItem className="border-b-gray border-b" itemName={2}>
 						<SpoilerButton
 							className="group hover:text-main aria-expanded:text-main flex w-full cursor-pointer
-								justify-between text-left transition-colors"
+								justify-between px-3 py-2 text-left transition-colors md:px-6 md:py-2.5"
 						>
 							<H4>Is crypto-trading complicated?</H4>
 							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
-						<SpoilerContent>
-							<div className="pt-2.5 text-sm md:pt-4 md:text-base">
-								Your security is our priority. Blue Orion uses bank-grade encryption, two-factor
-								authentication (2FA), and cold storage for digital assets. We comply with strict financial
-								regulations in [Country] and undergo regular audits. Funds are insured against unauthorized
-								access, so you can trade with confidence.
-							</div>
+						<SpoilerContent className="px-3 pt-0.5 pb-1.5 text-sm md:px-6 md:pt-1.5 md:pb-2.5 md:text-base">
+							Your security is our priority. Blue Orion uses bank-grade encryption, two-factor authentication
+							(2FA), and cold storage for digital assets. We comply with strict financial regulations in
+							[Country] and undergo regular audits. Funds are insured against unauthorized access, so you can
+							trade with confidence.
 						</SpoilerContent>
 					</SpoilerItem>
-					<SpoilerItem className="border-b-gray border-b px-3 py-2 md:px-6 md:py-2.5" itemName={3}>
+					<SpoilerItem className="border-b-gray border-b" itemName={3}>
 						<SpoilerButton
 							className="group hover:text-main aria-expanded:text-main flex w-full cursor-pointer
-								justify-between text-left transition-colors"
+								justify-between px-3 py-2 text-left transition-colors md:px-6 md:py-2.5"
 						>
 							<H4>How fast are withdrawals?</H4>
 							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
-						<SpoilerContent>
-							<div className="pt-2.5 text-sm md:pt-4 md:text-base">
-								Your security is our priority. Blue Orion uses bank-grade encryption, two-factor
-								authentication (2FA), and cold storage for digital assets. We comply with strict financial
-								regulations in [Country] and undergo regular audits. Funds are insured against unauthorized
-								access, so you can trade with confidence.
-							</div>
+						<SpoilerContent className="px-3 pt-0.5 pb-1.5 text-sm md:px-6 md:pt-1.5 md:pb-2.5 md:text-base">
+							Your security is our priority. Blue Orion uses bank-grade encryption, two-factor authentication
+							(2FA), and cold storage for digital assets. We comply with strict financial regulations in
+							[Country] and undergo regular audits. Funds are insured against unauthorized access, so you can
+							trade with confidence.
 						</SpoilerContent>
 					</SpoilerItem>
 				</Spoiler>

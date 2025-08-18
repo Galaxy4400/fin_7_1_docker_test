@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import { createContext, useContext, useState } from 'react';
 
 type ItemNameType = string | number;
@@ -94,12 +95,7 @@ export const SpoilerButton = ({
 	}
 
 	return (
-		<button
-			className={className}
-			onClick={() => toggle(itemName)}
-			aria-expanded={isActive}
-			data-active={isActive}
-		>
+		<button className={className} onClick={() => toggle(itemName)} aria-expanded={isActive}>
 			{children}
 		</button>
 	);
@@ -108,11 +104,9 @@ export const SpoilerButton = ({
 export const SpoilerContent = ({
 	className,
 	children,
-	isManual = false,
 }: {
 	className?: string;
 	children?: React.ReactNode | ((isActive: boolean) => React.ReactNode);
-	isManual?: boolean;
 }) => {
 	const { isActive } = useSpoilerItem();
 
@@ -120,13 +114,17 @@ export const SpoilerContent = ({
 		return children(isActive);
 	}
 
-	const isDisplay = isActive || isManual;
-
 	return (
-		isDisplay && (
-			<div className={className} aria-hidden={!isActive}>
-				{children}
+		<div
+			className={clsx(
+				'grid grid-rows-[0fr] overflow-hidden transition-all duration-500 ease-in-out',
+				isActive && 'grid-rows-[1fr]',
+			)}
+			aria-hidden={!isActive}
+		>
+			<div className="min-h-0">
+				<div className={className}>{children}</div>
 			</div>
-		)
+		</div>
 	);
 };
