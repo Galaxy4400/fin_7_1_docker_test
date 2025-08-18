@@ -27,7 +27,7 @@ export const Head = async () => {
 					</div>
 				</div>
 				<div className="flex items-center justify-center pt-5 md:pt-0">
-					<Image src={mainSrc} alt="main"></Image>
+					<Image src={mainSrc} alt="main" fetchPriority="high"></Image>
 				</div>
 			</Container>
 		</div>
