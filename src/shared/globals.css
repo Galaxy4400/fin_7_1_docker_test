@@ -11,6 +11,7 @@
 
 	--color-black: #111;
 	--color-gray: #cacaca;
+	--color-gray-2: #a7a7a7;
 
 	--color-background: #08111b;
 	--color-background-dark: #02060b;
@@ -38,6 +39,7 @@
 	--color-background-light: var(--color-background-light);
 
 	--color-gray: var(--color-gray);
+	--color-gray-2: var(--color-gray-2);
 
 	--background-image-gradient-main: var(--gradient);
 }
@@ -131,4 +133,12 @@ input[type='range']::-moz-range-track {
 
 .iti__search-input {
 	@apply h-[46px] w-full rounded-lg bg-white px-4 py-2.5 text-xl leading-tight;
+}
+
+.swiper-pagination-bullet {
+	@apply !bg-gray !h-3 !w-3 cursor-pointer;
+}
+
+.swiper-pagination-bullet-active {
+	@apply !bg-gray-2;
 }

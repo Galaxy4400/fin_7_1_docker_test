@@ -1,4 +1,4 @@
-export const ArrowIcon = ({ className }: { className?: string }) => {
+export const MenuArrowIcon = ({ className }: { className?: string }) => {
 	return (
 		<svg
 			className={className}

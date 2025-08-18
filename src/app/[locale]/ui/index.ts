@@ -8,4 +8,5 @@ export * from './guarantees';
 export * from './head';
 export * from './overview';
 export * from './partners';
+export * from './reviews';
 export * from './steps';

@@ -7,7 +7,11 @@ import { Button, Container, H2, H3, P } from '@/shared/ui';
 
 export const Steps = () => {
 	return (
-		<div className="py-12 md:py-20">
+		<div className="relative py-12 md:py-20">
+			<div
+				className="absolute top-[-163px] left-[-146px] -z-1 h-[257px] w-[445px] -rotate-19 rounded-[445px]
+					bg-[rgba(255,119,126,0.30)] blur-[100px]"
+			/>
 			<Container className="grid gap-6 md:gap-12">
 				<div className="grid gap-4 md:gap-8">
 					<H2 className="md:text-center">Easy start</H2>

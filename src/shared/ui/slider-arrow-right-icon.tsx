@@ -1,0 +1,17 @@
+export const SliderArrowRightIcon = ({ className }: { className?: string }) => {
+	return (
+		<svg
+			className={className}
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+		>
+			<path
+				d="M8.29492 16.59L12.8749 12L8.29492 7.41L9.70492 6L15.7049 12L9.70492 18L8.29492 16.59Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
+};

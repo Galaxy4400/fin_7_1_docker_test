@@ -1,20 +1,28 @@
 'use client';
 
 import {
-	ArrowIcon,
 	Button,
 	Container,
 	H2,
+	H4,
+	MenuArrowIcon,
 	Spoiler,
 	SpoilerButton,
 	SpoilerContent,
 	SpoilerItem,
 } from '@/shared/ui';
-import { H4 } from '@/shared/ui/h4';
 
 export const Faq = () => {
 	return (
-		<div className="py-12 md:py-20">
+		<div className="relative py-12 md:py-20">
+			<div
+				className="absolute top-[220px] left-[-96px] h-[257px] w-[445px] -rotate-[20deg] rounded-[445px]
+					bg-[rgba(255,119,126,0.30)] blur-[100px]"
+			/>
+			<div
+				className="absolute top-[100px] right-[-131.457px] h-[257px] w-[445px] rotate-[50deg] rounded-[445px]
+					bg-[rgba(214,56,153,0.30)] blur-[100px]"
+			/>
 			<Container className="grid gap-6 md:gap-12" size="sm">
 				<div className="grid gap-4 md:gap-8">
 					<H2 className="md:text-center">Crypto FAQ</H2>
@@ -26,7 +34,7 @@ export const Faq = () => {
 								justify-between px-3 py-2 text-left transition-colors md:px-6 md:py-2.5"
 						>
 							<H4>Is my money safe?</H4>
-							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
+							<MenuArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
 						<SpoilerContent className="px-3 pt-0.5 pb-1.5 text-sm md:px-6 md:pt-1.5 md:pb-2.5 md:text-base">
 							Your security is our priority. Blue Orion uses bank-grade encryption, two-factor authentication
@@ -41,7 +49,7 @@ export const Faq = () => {
 								justify-between px-3 py-2 text-left transition-colors md:px-6 md:py-2.5"
 						>
 							<H4>Is crypto-trading complicated?</H4>
-							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
+							<MenuArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
 						<SpoilerContent className="px-3 pt-0.5 pb-1.5 text-sm md:px-6 md:pt-1.5 md:pb-2.5 md:text-base">
 							Your security is our priority. Blue Orion uses bank-grade encryption, two-factor authentication
@@ -56,7 +64,7 @@ export const Faq = () => {
 								justify-between px-3 py-2 text-left transition-colors md:px-6 md:py-2.5"
 						>
 							<H4>How fast are withdrawals?</H4>
-							<ArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
+							<MenuArrowIcon className="transition-transform group-aria-expanded:-scale-100" />
 						</SpoilerButton>
 						<SpoilerContent className="px-3 pt-0.5 pb-1.5 text-sm md:px-6 md:pt-1.5 md:pb-2.5 md:text-base">
 							Your security is our priority. Blue Orion uses bank-grade encryption, two-factor authentication

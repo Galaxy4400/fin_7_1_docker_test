@@ -9,6 +9,7 @@ import {
 	Head,
 	Overview,
 	Partners,
+	Reviews,
 	Steps,
 } from './ui';
 
@@ -26,6 +27,7 @@ export default function HomePage() {
 			<Steps />
 			<Faq />
 			<FormBlock3 />
+			<Reviews />
 		</>
 	);
 }
